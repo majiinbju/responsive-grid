@@ -1,0 +1,84 @@
+/******************************************************************************
+                        Stylesheet for Responsive Grid
+******************************************************************************/
+
+/* Root Value Stylings */
+:root {
+    --std-margin: 3rem;
+    --font-size: 1rem;
+    --font-color: black;
+    --background-color: lightblue;
+}
+
+/* Body Stylings */
+body {
+    background-color: var(--background-color);
+    font-size: var(--font-size);
+    font-family: sans-serif;
+    color: var(--font-color);
+    padding: 2rem 0;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 100rem;
+    margin-inline: auto;
+    padding-inline: 2rem;
+}
+
+.stacked {
+    display: grid;
+}
+
+/* selecting direct child inside */
+.stacked > * {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.product__grid {
+    display: grid;
+    gap: 0.5rem;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.card {
+    aspect-ratio: 1 / 1.25;
+    /* border: 2px solid black; */
+}
+
+.card__content {
+    background-color: pink;
+    /* use align self end to make sure it doesn't stretch to fill */
+    align-self: end;
+    margin: 0.5rem 0.5rem 2rem;
+    padding: 0.5rem;
+    box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.1);
+}
+
+.card__title {
+    font-size: 1.25rem;
+    line-height: 1.1;
+}
+
+.card__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+@media (min-width: 40em) {
+    .card.featured {
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+
+    .card.featured .card__img {
+        aspect-ratio: 1 / 1.15;
+    }
+
+    .card.featured .card__title {
+        font-size: 1.75rem;
+    }
+}
